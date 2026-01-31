@@ -9,7 +9,7 @@ document.addEventListener('click', (e) => {
 })
 
 const menuHTML = menuArray.map( (item) => {
-    return `<section class="menu-item">
+    return `<div class="menu-item">
         <span class="food-icon"
         rol="img"
         aria-hidden="true">
@@ -24,7 +24,7 @@ const menuHTML = menuArray.map( (item) => {
         <button class="add-item-btn" 
         aria-label="add menu item to cart"
         data-add="${item.id}">+</button>
-    </section>`
+    </div>`
 }).join('');
 
 menuList.innerHTML = menuHTML;
