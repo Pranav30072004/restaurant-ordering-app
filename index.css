@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: 'Smythe', sans-serif;
+}
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./images/header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 167px;
+    color: white;
+}
+
+.app-header > h2 {
+    padding-left: 20px;
+    font-size: 39px;
+    font-weight: normal;
+}
+
+.app-header > p {
+    margin: 0;
+    padding-bottom: 120px;
+    padding-left: 20px;
+    font-size: 23px;
+}
+
+.menu-item {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #d2d2d2;
+
+}
+.food-icon {
+    font-size: 3rem;
+    margin-right: 20px;
+}
+.menu-details {
+    flex: 1;
+}
+.food-name {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.ingredients {
+    margin: 5px 0;
+    color: #8b8b8b;
+}
+
+.price {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.add-item-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #DEDEDE;
+    background-color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
