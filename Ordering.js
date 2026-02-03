@@ -3,11 +3,15 @@ import {menuArray} from "./data.js";
 const menuList = document.getElementById("main-menu");
 const cartDisplay = document.getElementById('item-container');
 const totalCartPrice = document.getElementById('total-price');
+const orderBtn = document.getElementById('order-btn');
 
 document.addEventListener('click', (e) => {
     if (e.target.dataset.add) {
         document.getElementById('cart').style.display = 'flex';
         handleAddClick(e.target.dataset.add);
+    }
+    if(e.target.dataset.remove) {
+        removeFromCart(e);
     }
 })
 let foodObjects = [];
@@ -23,13 +27,14 @@ function handleAddClick(foodId) {
 
 function renderCart() {
     let cartHTML = ``
-    foodObjects.forEach( (foodObject) => {
+    foodObjects.forEach( (foodObject, index) => {
         cartHTML += `
-        <div class="cart-item">
+        <div class="cart-item" data-index = ${index}>
             <div class="cart-text">
                 <p>${foodObject.name}</p>
                 <p role="button" 
-                class="remove-btn" 
+                class="remove-btn"
+                
                 data-remove=${foodObject.id}>remove</p>
             </div>
             <p class="cart-price">$${foodObject.price}</p>
@@ -39,6 +44,14 @@ function renderCart() {
     totalCartPrice.innerText = `$${getTotalPrice()}`;
     return cartHTML
 
+
+}
+
+function removeFromCart(e) {
+    const removeBtn = e.target.closest('.remove-btn');
+    foodObjects.splice(Number(removeBtn.closest('.cart-item').dataset.index), 1);
+
+    cartDisplay.innerHTML = renderCart();
 
 }
 
