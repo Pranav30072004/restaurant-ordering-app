@@ -4,6 +4,9 @@ const menuList = document.getElementById("main-menu");
 const cartDisplay = document.getElementById('item-container');
 const totalCartPrice = document.getElementById('total-price');
 const orderBtn = document.getElementById('order-btn');
+const paymentModal = document.getElementById('payment-modal');
+const cardForm = document.getElementById('card-form');
+const paymentBtn = document.getElementById('pay-btn');
 
 document.addEventListener('click', (e) => {
     if (e.target.dataset.add) {
@@ -14,6 +17,15 @@ document.addEventListener('click', (e) => {
         removeFromCart(e);
     }
 })
+
+orderBtn.addEventListener('click', () => {
+    paymentModal.style.display = 'flex';
+})
+
+paymentBtn.addEventListener('click', (e) => {
+    handleOrderPlacement(e);
+})
+
 let foodObjects = [];
 
 function handleAddClick(foodId) {
@@ -27,8 +39,9 @@ function handleAddClick(foodId) {
 
 function renderCart() {
     let cartHTML = ``
-    foodObjects.forEach( (foodObject, index) => {
-        cartHTML += `
+    if(foodObjects.length > 0) {
+        foodObjects.forEach((foodObject, index) => {
+            cartHTML += `
         <div class="cart-item" data-index = ${index}>
             <div class="cart-text">
                 <p>${foodObject.name}</p>
@@ -40,7 +53,8 @@ function renderCart() {
             <p class="cart-price">$${foodObject.price}</p>
         </div>
         `
-    })
+        })
+    }
     totalCartPrice.innerText = `$${getTotalPrice()}`;
     return cartHTML
 
@@ -62,6 +76,18 @@ function getTotalPrice() {
     return totalPrice;
 }
 
+function handleOrderPlacement(e) {
+    e.preventDefault();
+    const cardFormData = new FormData(cardForm);
+    const userName = cardFormData.get('Name');
+
+    foodObjects = [];
+    document.getElementById('cart').innerHTML = `
+        <div class="success-message">Thanks ${userName}! Your order is on its way!</div>
+    `;
+    paymentModal.style.display = 'none';
+
+}
 
 const menuHTML = menuArray.map( (item) => {
     return `<div class="menu-item">

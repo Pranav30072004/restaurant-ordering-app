@@ -29,6 +29,42 @@
             </section>
         </main>
 
+        <section class="payment-modal" id="payment-modal">
+            <p>Enter card details</p>
+            <form class="card-form" id="card-form">
+                <input type="text"
+                       class="payment-details"
+                       id="holder-name"
+                       name="Name"
+                       placeholder="Enter your name"
+                       aria-label="Enter your name"
+                       required
+                />
+                <input type="number"
+                       class="payment-details"
+                       id="card-number"
+                       name="cardNumber"
+                       minlength="13"
+                       maxlength="19"
+                       placeholder="Enter card number"
+                       aria-label="Enter card number"
+                       required
+                />
+                <input type="number"
+                       class="payment-details"
+                       minlength="3"
+                       maxlength="3"
+                       id="card-cvv"
+                       naem="cardCVV"
+                       placeholder="Enter CVV"
+                       aria-label="Enter CVV"
+                       required
+                />
+                <button class="pay-btn" id="pay-btn">Pay</button>
+            </form>
+
+        </section>
+
 
 	<script src="Ordering.js" type="module"></script>
     </body>
